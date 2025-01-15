@@ -186,3 +186,25 @@ footer nav ul {
 	margin: 2em
 }
 
+.btnTrier{
+	border-radius: 20px;
+	border:1px solid #1D6154;
+	padding: 10px 20px;
+	background-color: white;
+	color: #1D6154;
+	font-size: 16px;
+	font-family:'Syne'; 
+	text-align: center;
+}
+.btnTrier:hover{
+	background-color: #1D6154;
+	color: white;
+
+}
+.btns-tri{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap:5px;
+	margin-block: 30px;
+}
