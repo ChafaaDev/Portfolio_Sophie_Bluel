@@ -208,3 +208,9 @@ footer nav ul {
 	gap:5px;
 	margin-block: 30px;
 }
+
+#formulaire {
+	display: flex;
+	flex-direction: column;
+
+}
