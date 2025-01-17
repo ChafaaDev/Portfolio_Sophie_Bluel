@@ -196,11 +196,7 @@ EditElements.style.display = "block";
 document.getElementById("login").style.display = "none"
 }
 
-function disableEditMode(){
-    const isEditmode = localStorage.setItem("isEdit", "false");
-    const EditElements = document.getElementsByClassName("editElement");
-    EditElements.style.display = "none"
-}
+
 function generateModal(){
     const divModal = document.createElement("div");
     divModal.classList.add("modalAdmin");
