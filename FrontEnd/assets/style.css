@@ -241,8 +241,8 @@ a{
 	
 }
 .modalAdmin{
-	width:800px;
-	height:700px;
+	width:712px;
+	height:723px;
 	border-radius: 10px;
 	background-color: white;
 	position: fixed;
@@ -257,14 +257,17 @@ a{
 	
 }
 .miniGallery{
-	height:500px;
+	height:65%;
 	width : 70%;
 	background-color: white;
-	padding: 20px;
+	padding-block: 20px;
 	display: grid;
 	grid-template: repeat(3, 1fr)/repeat(5, 1fr);
-	margin-top: 30px;
+	margin-top: 17px;
+    border-bottom: 1px solid #8080808f;
+    margin-bottom: 45px;
 }
+
 #portfolio{
 	margin-top: 8em;
 }
@@ -314,3 +317,20 @@ a{
 	position: relative;
 	z-index: 0;
  }
+ .modalAdmin h2{
+	font-family:work sans;
+	font-weight:400;
+	color:black
+}
+#addPhoto{
+	border:none;
+	background-color:#1d6154;
+	color:white;
+	width:320px;
+	border-radius:20px;
+	height:auto;
+	font-size:14px;
+	padding-block:10px;
+	font-weight:400;
+	font-family:Montserrat;
+}

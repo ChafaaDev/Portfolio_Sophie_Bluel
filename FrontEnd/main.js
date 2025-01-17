@@ -221,19 +221,15 @@ function generateModal(){
     
     galleryModal.querySelectorAll('figcaption').forEach(caption=>{caption.classList.add('hidden-caption')})
 
-
-
-    
-
     galleryModal.querySelectorAll("figure").forEach(figure=>{
         
         const deleteBtn = document.createElement("button");
 
         deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>'  ;
-        
+
         deleteBtn.classList.add("delete-button") ;
-        
-   figure.appendChild(deleteBtn)
+
+        figure.appendChild(deleteBtn)
 
     })
     
@@ -245,7 +241,15 @@ function generateModal(){
     
     document.body.appendChild(divModal);
     
-    modalOverlay.style.display = "block"
+    modalOverlay.style.display = "block";
+
+    const addPhotoBtn = document.createElement("button");
+
+    addPhotoBtn.textContent = "Ajouter une photo";
+
+    addPhotoBtn.setAttribute("id", "addPhoto")
+
+    divModal.appendChild(addPhotoBtn)
     
    
 }
