@@ -206,7 +206,7 @@ footer nav ul {
 	flex-direction: row;
 	justify-content: center;
 	gap:5px;
-	margin-block: 30px;
+	margin-block: 40px;
 }
 
 #formulaire {
@@ -233,4 +233,59 @@ a{
 	background-color: inherit;
 	border: none;
 	font-family: inherit;
+	padding-left: 10px;
+	position: relative;
+	left:200px;
+	bottom: 23px; 
+	justify-self: center;
+	
 }
+.modalAdmin{
+	width:800px;
+	height:700px;
+	border-radius: 10px;
+	background-color: white;
+	position: fixed;
+	top:50%; 
+	left: 50%;
+	z-index: 1000;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	
+}
+.miniGallery{
+	height:500px;
+	width : 70%;
+	background-color: white;
+	padding: 20px;
+	display: grid;
+	grid-template: repeat(3, 1fr)/repeat(5, 1fr);
+	
+}
+#portfolio{
+	margin-top: 8em;
+}
+
+ .hidden-caption{
+	display: none;
+ }
+ .closeModalBtn{
+	border: none;
+	background-color: inherit;
+	position: absolute;
+	top:10px;
+	right:10px;
+ }
+ .modal-overlay{
+	display: none;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+ }

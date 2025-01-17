@@ -10,16 +10,12 @@ window.onload = function(){
     const editMode = urlParams.get("editMode")==="true";
     
     if(editMode && loggedIn){
-        // const theGallery = document.querySelector(".gallery").setAttribute("contenteditable", "true");
-        // const button = document.createElement("button");
-        // button.textContent = "Modifier";
-        // theGallery.appendChild(button)
-        // document.getElementById("logout").style.display = "block"
-        // document.querySelectorAll(".EditElement").style.display = "block"
-        
+       
         setEditMode()
     }
-}, 200)
+
+}, 100)
+
 } 
 
     
@@ -31,7 +27,10 @@ window.onload = function(){
     
     const worksCategory = await categories.json();
     
-    
+    const modalOverlay = document.createElement("div");
+
+    modalOverlay.classList.add("modal-overlay");
+
     const sectionWorks = document.getElementById("portfolio");
     
     const sectionTitle = document.createElement("h2");
@@ -39,14 +38,18 @@ window.onload = function(){
     sectionTitle.textContent = "Mes Projets";
      
     sectionWorks.appendChild(sectionTitle);
+
+    sectionWorks.appendChild(modalOverlay)
    
     const buttonEdit = document.createElement("button");
     
-    buttonEdit.textContent = "Modifier";
+    buttonEdit.innerHTML = '<i class="fa-regular fa-pen-to-square" style="margin-right:10px"></i>   modifier';
 
     buttonEdit.classList.add("editBtn");
 
-    buttonEdit.style.display = "none"
+    buttonEdit.style.display = "none";
+
+    buttonEdit.addEventListener("click", ()=>{generateModal(works)})
 
     sectionTitle.appendChild(buttonEdit)
     
@@ -144,7 +147,9 @@ async function generateWorks(works) {
     for(let i = 0 ; i < works.length ; i++){
         
     const figureElement = document.createElement("figure");
+    
     figureElement.classList.add("image")
+    
     const imgElement = document.createElement("img");
     
     imgElement.src = works[i].imageUrl;
@@ -195,4 +200,24 @@ function disableEditMode(){
     const isEditmode = localStorage.setItem("isEdit", "false");
     const EditElements = document.getElementsByClassName("editElement");
     EditElements.style.display = "none"
+}
+function generateModal(){
+    const divModal = document.createElement("div");
+    divModal.classList.add("modalAdmin");
+    const modalTitle = document.createElement("h2");
+    modalTitle.textContent = "Galerie photo";
+    const galleryModal = galleryDiv.cloneNode(true)
+    galleryModal.classList.add("miniGallery");
+    const closeBtn = document.createElement("button");
+    closeBtn.innerHTML='<i class="fa-solid fa-xmark"></i>';
+    closeBtn.classList.add("closeModalBtn")
+    closeBtn.addEventListener("click", ()=>{divModal.style.display="none"; modalOverlay.style.display = "none"})
+    galleryModal.querySelectorAll('figcaption').forEach(caption=>{caption.classList.add('hidden-caption')})
+    divModal.appendChild(closeBtn);
+    divModal.appendChild(modalTitle)
+    divModal.appendChild(galleryModal);
+    document.body.appendChild(divModal);
+    modalOverlay.style.display = "block"
+    // console.log(newGallery2)
+   
 }
