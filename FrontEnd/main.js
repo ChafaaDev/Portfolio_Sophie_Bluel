@@ -198,22 +198,54 @@ document.getElementById("login").style.display = "none"
 
 
 function generateModal(){
+
     const divModal = document.createElement("div");
+    
     divModal.classList.add("modalAdmin");
+    
     const modalTitle = document.createElement("h2");
+   
     modalTitle.textContent = "Galerie photo";
+    
     const galleryModal = galleryDiv.cloneNode(true)
+    
     galleryModal.classList.add("miniGallery");
+    
     const closeBtn = document.createElement("button");
+    
     closeBtn.innerHTML='<i class="fa-solid fa-xmark"></i>';
+    
     closeBtn.classList.add("closeModalBtn")
+    
     closeBtn.addEventListener("click", ()=>{divModal.style.display="none"; modalOverlay.style.display = "none"})
+    
     galleryModal.querySelectorAll('figcaption').forEach(caption=>{caption.classList.add('hidden-caption')})
+
+
+
+    
+
+    galleryModal.querySelectorAll("figure").forEach(figure=>{
+        
+        const deleteBtn = document.createElement("button");
+
+        deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>'  ;
+        
+        deleteBtn.classList.add("delete-button") ;
+        
+   figure.appendChild(deleteBtn)
+
+    })
+    
     divModal.appendChild(closeBtn);
+    
     divModal.appendChild(modalTitle)
+    
     divModal.appendChild(galleryModal);
+    
     document.body.appendChild(divModal);
+    
     modalOverlay.style.display = "block"
-    // console.log(newGallery2)
+    
    
 }
