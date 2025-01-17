@@ -8,6 +8,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="./assets/style.css">
+   <script type="module" src="./login.js"></script>
 </head>
 <body>
     <header>
@@ -16,21 +17,23 @@
             <ul>
                 <li>projets</li>
                 <li>contact</li>
-                <li>logout</li>
+                <li style="font-weight: bold;">login</li>
                 <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
             </ul>
         </nav>
     </header> 
     <section id="contact">
         <h2 class="section-title">Log In</h2>
-        <form action="">
+        <form id="loginForm">
             <label for="Email">E-mail</label>
-            <input type="text" required >
+            <input type="text" required id="email" aria-errormessage="errorUsername">
+            <div id="errorUsername" style="display: none; color: red;" role="alert" aria-live="assertive">Veuillez saisir la bonne adresse mail</div>
             <label for="password">Mot de passe</label>
-            <input type="password" required>
-            <input type="submit" value="Se connecter">
+            <input type="password" required id="password" aria-errormessage="errorPassword">
+            <div id="errorPassword" style="display: none; color: red;" role="alert" aria-live="assertive">Veuillez saisir le bon mot de passe</div>
+            <input type="submit" value="Se connecter" id="submitBtn">
         </form>
-        <p>Mot de passe oublié</p>
+        
     </section>
 </body>
 </html>

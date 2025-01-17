@@ -1,4 +1,28 @@
 
+window.onload = function(){
+   
+    setTimeout(()=>{
+
+    const loggedIn = localStorage.getItem("loggedIn")==="true"
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    const editMode = urlParams.get("editMode")==="true";
+    
+    if(editMode && loggedIn){
+        // const theGallery = document.querySelector(".gallery").setAttribute("contenteditable", "true");
+        // const button = document.createElement("button");
+        // button.textContent = "Modifier";
+        // theGallery.appendChild(button)
+        // document.getElementById("logout").style.display = "block"
+        // document.querySelectorAll(".EditElement").style.display = "block"
+        
+        setEditMode()
+    }
+}, 200)
+} 
+
+    
     const response = await fetch(" http://localhost:5678/api/works")
    
     const works = await response.json();
@@ -15,6 +39,16 @@
     sectionTitle.textContent = "Mes Projets";
      
     sectionWorks.appendChild(sectionTitle);
+   
+    const buttonEdit = document.createElement("button");
+    
+    buttonEdit.textContent = "Modifier";
+
+    buttonEdit.classList.add("editBtn");
+
+    buttonEdit.style.display = "none"
+
+    sectionTitle.appendChild(buttonEdit)
     
     const btnsTri = document.createElement("div");
                
@@ -49,6 +83,8 @@
     const galleryDiv = document.createElement("div");
     
     galleryDiv.classList.add("gallery");
+
+    galleryDiv.setAttribute("contenteditable", "false")
     
     sectionWorks.appendChild(galleryDiv);
    
@@ -101,12 +137,7 @@ allFilterBtns2.forEach(button => {
           
         
 
-   
-   
-    
-
-
-    async function generateWorks(works) {
+async function generateWorks(works) {
         
    
 
@@ -137,5 +168,31 @@ allFilterBtns2.forEach(button => {
      
 generateWorks(works);
 
+ function setEditMode(){ 
+   
+    document.getElementById("login").style.display = "none";
+    document.getElementById("logout").style.display = "block";
+    btnsTri.style.display = "none";
+    buttonEdit.style.display = "block"
+    document.getElementById("banner").style.display = "block"
+}
+function hideEditElements(){
+    document.querySelector(".banner").style.display = "none";
+    document.getElementById("login").style.display = "block"
+    document.getElementById("logout").style.display = "none";
+    document.querySelector('.btns-Tri').style.display = "block"; 
+}
 
+function enableEditMode(){
+const isEditmode = localStorage.setItem("isEdit", "true");
+const EditElements = document.getElementsByClassName("editElement");
+EditElements.contentEditable = true;
+EditElements.style.display = "block";
+document.getElementById("login").style.display = "none"
+}
 
+function disableEditMode(){
+    const isEditmode = localStorage.setItem("isEdit", "false");
+    const EditElements = document.getElementsByClassName("editElement");
+    EditElements.style.display = "none"
+}
