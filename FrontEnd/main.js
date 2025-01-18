@@ -178,23 +178,23 @@ generateWorks(works);
     document.getElementById("login").style.display = "none";
     document.getElementById("logout").style.display = "block";
     btnsTri.style.display = "none";
-    buttonEdit.style.display = "block"
-    document.getElementById("banner").style.display = "block"
+    buttonEdit.style.display = "block";
+    document.getElementById("banner").style.display = "block";
 }
-function hideEditElements(){
-    document.querySelector(".banner").style.display = "none";
-    document.getElementById("login").style.display = "block"
-    document.getElementById("logout").style.display = "none";
-    document.querySelector('.btns-Tri').style.display = "block"; 
-}
+// function hideEditElements(){
+//     document.querySelector(".banner").style.display = "none";
+//     document.getElementById("login").style.display = "block"
+//     document.getElementById("logout").style.display = "none";
+//     document.querySelector('.btns-Tri').style.display = "block"; 
+// }
 
-function enableEditMode(){
-const isEditmode = localStorage.setItem("isEdit", "true");
-const EditElements = document.getElementsByClassName("editElement");
-EditElements.contentEditable = true;
-EditElements.style.display = "block";
-document.getElementById("login").style.display = "none"
-}
+// function enableEditMode(){
+// const isEditmode = localStorage.setItem("isEdit", "true");
+// const EditElements = document.getElementsByClassName("editElement");
+// EditElements.contentEditable = true;
+// EditElements.style.display = "block";
+// document.getElementById("login").style.display = "none"
+// }
 
 
 function generateModal(){
@@ -251,6 +251,40 @@ function generateModal(){
 
     divModal.appendChild(addPhotoBtn);
 
+    addPhotoBtn.addEventListener('click', ()=>{
+
+        const addPicForm = document.createElement("form");
+        addPicForm.classList.add('addImageForm');
+        addPicForm.style.display = "flex"
+        const imageInput = document.createElement("div");
+        imageInput.setAttribute("id", "image-upload-box");
+        imageInput.innerHTML = '<i class="fa-regular fa-image"></i>'
+        const AjouterPhoto = document.createElement("button")
+        AjouterPhoto.textContent = "+ Ajouter photo";
+        const imageUploadParagrah = document.createElement("p")
+        imageUploadParagrah.textContent = "jpg, png : 4mo max";
+        imageInput.appendChild(AjouterPhoto, imageUploadParagrah);
+        const labelTitle = document.createElement("label");
+        labelTitle.textContent = "Titre";
+        const titleInput = document.createElement("input");
+        titleInput.setAttribute("type", "text");
+      
+        const labelCategory = document.createElement('label')
+        labelCategory.textContent = "Catégorie";
+        const inputCategory = document.createElement('input');
+        inputCategory.setAttribute("type", "select");
+        const validateButton = document.createElement("input");
+        validateButton.setAttribute("type", "submit");
+        validateButton.setAttribute("value","Valider");
+          addPicForm.append(imageInput, labelTitle, titleInput, labelCategory, inputCategory, validateButton);
+          divModal.appendChild(addPicForm)
+          addPicForm.style.display = "block";
+          galleryModal.style.display = "none";
+         modalTitle.textContent = "Ajout photo";
+          addPhotoBtn.style.display = "none"
+    })
+
     modalOverlay.addEventListener('click', (e)=>{divModal.style.display = "none"; modalOverlay.style.display = "none"})
    
 }
+// console.log(works)

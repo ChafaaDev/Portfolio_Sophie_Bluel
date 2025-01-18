@@ -136,5 +136,5 @@ document.getElementById("errorPassword").style.display = "none";
 })
 
 }
-   loginAdmin()
+   loginAdmin();
 
