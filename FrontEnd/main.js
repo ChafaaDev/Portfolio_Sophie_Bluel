@@ -249,7 +249,8 @@ function generateModal(){
 
     addPhotoBtn.setAttribute("id", "addPhoto")
 
-    divModal.appendChild(addPhotoBtn)
-    
+    divModal.appendChild(addPhotoBtn);
+
+    modalOverlay.addEventListener('click', (e)=>{divModal.style.display = "none"; modalOverlay.style.display = "none"})
    
 }
