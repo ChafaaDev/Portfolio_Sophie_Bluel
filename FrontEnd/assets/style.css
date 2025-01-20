@@ -278,8 +278,8 @@ a{
 	border: none;
 	background-color: inherit;
 	position: absolute;
-	top:10px;
-	right:10px;
+	top:20px;
+	right:20px;
  }
  .modal-overlay{
 	display: none;
@@ -341,11 +341,11 @@ a{
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: 100%;
+	
 	width: 70%;
 }
 #image-upload-box{
-	height:100px;
+	height:200px;
 	width: 100%;
 	background-color: #E8F1F6;
 	display: flex;
@@ -353,10 +353,34 @@ a{
 	justify-content: center;
 	align-items: center;
 }
-.addImageForm input{
+.addImageForm>input:nth-child(3),
+.addImageForm>select:nth-child(5){
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	width: 100%;
+}
+#validerBtn{
+	justify-self: center;
+}
+.addImageForm label{
+	margin-right: auto;
+	padding-block: 10px;
+}
+#returnBtn{
+	position: fixed;
+	top:20px;
+	left:20px;
+}
+#ajouterPetit{
+	border-radius: 20px;
+	background-color: #CBD6DC;
+	border: none;
+	color: #306685;
+	font-family: work sans;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 10px 40px;
+	margin-block: 10px;
 }

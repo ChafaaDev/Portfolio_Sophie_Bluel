@@ -61,80 +61,86 @@
 // })
 async function loginAdmin() {
     
-const loginForm = document.getElementById("loginForm"); 
+         const loginForm = document.getElementById("loginForm"); 
     
-loginForm.addEventListener("submit", async (event)=>{
+        loginForm.addEventListener("submit", async (event)=>{
 
-    event.preventDefault();
+                event.preventDefault();
 
-    const emailinput = document.getElementById("email").value;
+                const emailinput = document.getElementById("email").value;
 
-    const passwordinput = document.getElementById("password").value;
+                const passwordinput = document.getElementById("password").value;
  
-try{
+                try{
 
-    const apiUrl = ('http://localhost:5678/api/users/login');
+                        const apiUrl = ('http://localhost:5678/api/users/login');
 
-    const loginCredentials = {email : emailinput , password : passwordinput};
+                        const loginCredentials = {email : emailinput , password : passwordinput};
 
-    const response = await fetch(apiUrl, {
+                        const response = await fetch(apiUrl, {
 
-    method : 'POST',
+                            method : 'POST',
 
-    headers : {"content-type" : "application/json"},
+                            headers : {"content-type" : "application/json"},
 
-    body : JSON.stringify(loginCredentials)
-})
+                            body : JSON.stringify(loginCredentials)
+                        });
 
-    if(!response.ok){throw new Error("Echec de connexion")}
+                        if(!response.ok){
+                
+                            throw new Error("Echec de connexion")
+                        }
+                    
+                        const data = await response.json();
 
-        const data = await response.json();
+                        const authToken = data.token;
 
-        const authToken = data.token;
+                        localStorage.setItem("loggedIn", "true");
 
-        localStorage.setItem("loggedIn", "true");
+                        localStorage.setItem("Token", authToken);
+                        
+                        const formFields = document.querySelectorAll("input");
 
-        localStorage.setItem("Token", authToken);
- 
+                        formFields.forEach(field=>{
+                    
+                            field.addEventListener("input", ()=>{
+                    
+                                document.getElementById("errorUsername").style.display = "none";
+                    
+                                 document.getElementById("errorPassword").style.display = "none";
+
+                            })
+                        })
 
 
-if(loginCredentials.email!=="sophie.bluel@test.tld"){
+                        if(emailinput!==true){
 
-    document.getElementById("errorUsername").style.display = "block";
+                            document.getElementById("errorUsername").style.display = "block";
+            
+                        } 
+        
+                        if(passwordinput!==true){
+
+                                document.getElementById("errorPassword").style.display = "block";
+        
+                        }  
+                        
+            
+                                window.location.href = "./index.html?editMode=true";
+
+        
+                        
+        
+
+
     
-} 
-    if (loginCredentials.password!=="S0phie"){
 
-    document.getElementById("errorPassword").style.display = "block";
-   
-    } 
-        else {
-    
-     window.location.href = "./index.html?editMode=true";
 
- 
-    }
- 
-}catch(error){
-    
-    alert(error.message)
-}
-
-})
-
-const formFields = document.querySelectorAll("input");
-
-formFields.forEach(field=>{
-    
-field.addEventListener("input", ()=>{
-    
-document.getElementById("errorUsername").style.display = "none";
-    
-document.getElementById("errorPassword").style.display = "none";
-
-})
-})
-
+                }catch(error){
+            
+                    alert(error.message)
+                }
+        })
 }
    loginAdmin();
 
