@@ -46,10 +46,6 @@ async function getWorks(works, categories){
         
         const worksCategory = await categories.json();
 
-
-
-            
-        
         const modalOverlay = document.createElement("div");
 
         modalOverlay.classList.add("modal-overlay");
@@ -312,6 +308,7 @@ async function getWorks(works, categories){
     } catch(error){
         
     console.log("Echec de connexion à l'API ", error )
+    
     }
 }
 
