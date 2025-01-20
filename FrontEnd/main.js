@@ -245,9 +245,11 @@ async function getWorks(works, categories){
 
 
             addPhotoBtn.addEventListener('click', ()=>{
+
                 const returnButton = document.createElement("button")
-                returnButton.innerHTML = '<i class="fa-solid fa-arrow-left" id="returnBtn"></i>'
-                returnButton.addEventListener("click", ()=>{addPicForm.close(); galleryModal.style.display ="grid"})
+                returnButton.innerHTML = '<i class="fa-solid fa-arrow-left"></i>'
+                returnButton.setAttribute("id", "returnbtn");
+                returnButton.addEventListener("click", ()=>{divModal.innerHTML="";generateModal()})
                 const addPicForm = document.createElement("form");
                 addPicForm.classList.add('addImageForm');
                 addPicForm.style.display = "flex"
